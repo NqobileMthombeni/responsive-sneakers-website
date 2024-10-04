@@ -46,27 +46,31 @@ let swiperImages = new Swiper('.home__swiper', {
             // Hide the circles during transition to prevent glitching
             document.getElementById('circle1').style.visibility = 'hidden';
             document.getElementById('circle2').style.visibility = 'hidden';
+            document.getElementById('circle3').style.visibility = 'hidden'; // Added third circle
         },
         slideChangeTransitionEnd: function () {
             // Show circles again after transition
             document.getElementById('circle1').style.visibility = 'visible';
             document.getElementById('circle2').style.visibility = 'visible';
-            
-            const realIndex = this.realIndex; // Get the real index
-            const slideWidth = this.slides[0].clientWidth; // Get width of the slide
-            
-            // Adjust the position of circles based on real index
+            document.getElementById('circle3').style.visibility = 'visible'; // Added third circle
+
+            const realIndex = this.realIndex; // Get the real index, which accounts for looping
+            const slideWidth = this.slides[realIndex].clientWidth; // Get the actual width of the slide
+
+            // Adjust the position of all three circles based on real index
             const translateValue = realIndex * slideWidth; // Calculate position
-            
+
             document.getElementById('circle1').style.transform = `translateX(${translateValue}px)`;
             document.getElementById('circle2').style.transform = `translateX(${translateValue}px)`;
+            document.getElementById('circle3').style.transform = `translateX(${translateValue}px)`; // Adjust for third circle
         }
     }
 });
 
 
+
 let swiperTitles = new Swiper('.home__titles', {
-    loop: true,  // Keep loop enabled for infinite scroll
+    loop: false,  // Keep loop enabled for infinite scroll
     spaceBetween: 64,
     grabCursor: true,
     centeredSlides: true,
