@@ -747,6 +747,7 @@ button {
   padding: 2rem 1.5rem;
   border-radius: 1rem;
   transition: .3s;
+  margin-bottom: 30px;
 }
 
 .collection__img {
@@ -897,4 +898,4 @@ button {
       grid-template-columns: repeat(3, 1fr);
   }
 
-  .collection__
+}
